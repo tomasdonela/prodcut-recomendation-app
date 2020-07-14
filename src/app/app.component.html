@@ -1,28 +1,29 @@
 <div>
-  <h2>This is product recommendation app</h2>
+  <h1 class="h1">This is product recommendation app</h1>
   <form (ngSubmit)="getSubmit()" [formGroup]="form">
     <div *ngFor="let question of questions" [formGroup]="form">
-      <div>
-        <label [attr.for]="question.subject">{{question.question}}</label>
+      <div class="div question">
+        <label class="label question" [attr.for]="question.subject">{{question.question}}</label>
         <div>
-          <select [id]="question.subject" [formControlName]="question.subject">
+          <select class="select question" [id]="question.subject" [formControlName]="question.subject">
             <option *ngFor="let opt of question.options" [value]="opt">{{opt}}</option>
           </select>
         </div>
       </div>
+      <hr class="hr solid">
     </div>
-    <button type="submit">Submit</button>
+    <button type="submit" class="btn">Submit</button>
   </form>
+  <h2 class="h2">Posible products:</h2>
   <div *ngIf="products?.length > 0; then thenBlock else elseBlock"></div>
   <ng-template #thenBlock>
-    <label>Posible products:</label>
-    <div *ngFor="let product of products">
-      <label>{{product.name}}</label>
+    <div class="div product" *ngFor="let product of products">
+      <label class="label product">{{product.name}}</label>
     </div>
   </ng-template>
   <ng-template #elseBlock>
-    <div>
-      <label>Sorry but there are no products which would match entered criteria</label>
+    <div class="div product">
+      <label class="label product">Sorry but there are no products which would match entered criteria</label>
     </div>
   </ng-template>
 </div>
